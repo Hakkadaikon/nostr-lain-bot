@@ -1,27 +1,15 @@
 {
-  "name": "nostr-bot",
-  "version": "0.1.0",
-  "main": "src/main.mjs",
-  "license": "MIT",
   "private": true,
-  "scripts": {
-    "to-hex": "node scripts/to_hex.js",
-    "gen-key-pair": "node scripts/gen_key_pair.js",
-    "sub-reply": "node scripts/sub_reply.js"
-  },
-  "dependencies": {
-    "@mozilla/readability": "^0.4.4",
-    "axios": "^1.4.0",
-    "dotenv": "^16.1.4",
-    "jsdom": "^22.1.0",
-    "newsapi": "^2.4.1",
-    "node-cron": "^3.0.2",
-    "nostr-tools": "^1.11.1",
-    "openai": "^3.2.1",
-    "websocket-polyfill": "^0.0.3"
-  },
+  "name": "nostr-lain-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Hakkadaikon/nostr-lain-bot.git",
+  "author": "hakkadaikon <hakkadaikon@yahoo.co.jp>",
+  "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.43.0",
-    "prettier": "^2.8.8"
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.55.0",
+    "prettier": "3.1.0"
   }
 }
