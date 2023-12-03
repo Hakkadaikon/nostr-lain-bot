@@ -23,6 +23,7 @@ const cmdHelp = (match, ev) => {
  * @summary Post a news review
  */
 const cmdCycTalk = () => {
+  logger.debug("openai send...");
   openai.send(
     (str) => {
       logger.debug("prompt post: " + str);
@@ -43,6 +44,7 @@ const routeMap = [[/(help|ヘルプ|へるぷ)/g, true, cmdHelp]];
  * @summary Reply the response by OpenAI
  */
 const cmdOpenAI = (ev) => {
+  logger.debug("openai send...");
   openai.send(
     (str) => {
       logger.debug("prompt reply: " + str);
@@ -99,11 +101,11 @@ export async function init() {
   event.init(config.BOT_PRIVATE_KEY_HEX);
 
   // Post a startup message
-  const runPost = event.create("post", "おはよう。");
-  relay.publish(runPost);
+  // const runPost = event.create("post", "おはよう。");
+  // relay.publish(runPost);
 
   // Post a talk review every 6 hours
-  cron.schedule("0 * * * *", () => cmdCycTalk());
+  // cron.schedule("* */1 * * *", () => cmdCycTalk());
 
   process.on("SIGINT", () => {
     logger.info("SIGINT");
@@ -129,5 +131,5 @@ export async function init() {
   relay.subscribe(callback);
 
   // Post talk on startup
-  cmdCycTalk();
+  // cmdCycTalk();
 }
