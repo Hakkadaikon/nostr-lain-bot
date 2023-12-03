@@ -26,7 +26,7 @@ $ docker-compose up -d
 
 lain bot operates according to the following terms.
 
-https://nlab.itmedia.co.jp/nl/articles/1907/07/news028.html
+https://www.nbcuni.co.jp/rondorobe/anime/lain/ttl/
 
 
 ## Author
