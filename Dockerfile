@@ -9,5 +9,5 @@ COPY src /app/src
 # Install libraries
 RUN yarn install
 
-# Start yaruo
+# Start lain
 CMD ["node", "src/main.mjs"]
