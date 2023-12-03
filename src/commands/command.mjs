@@ -23,10 +23,15 @@ const cmdHelp = (match, ev) => {
  * @summary Post a news review
  */
 const cmdCycTalk = () => {
-  //cmdNews((str) => {
-  //  const post = event.create("post", str);
-  //  relay.publish(post);
-  //});
+  openai.send(
+    (str) => {
+      logger.debug("prompt post: " + str);
+      const post = event.create("post", str);
+      relay.publish(post);
+    },
+    config.BOT_INITIAL_PROMPT + config.BOT_REPLY_PROMPT,
+    "gpt-4",
+  );
 };
 
 /**
@@ -98,7 +103,7 @@ export async function init() {
   relay.publish(runPost);
 
   // Post a talk review every 6 hours
-  cron.schedule("0 */6 * * *", () => cmdCycTalk());
+  cron.schedule("0 * * * *", () => cmdCycTalk());
 
   process.on("SIGINT", () => {
     logger.info("SIGINT");
