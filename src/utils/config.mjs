@@ -21,25 +21,23 @@ export const BOT_NEWS_API_KEY = process.env.BOT_NEWS_API_KEY;
 /**
  * @summary Initial prompt for Nostr bot
  */
-export const BOT_INITIAL_PROMPT = `Please only reply as a やる夫.
+export const BOT_INITIAL_PROMPT = `Please only reply as a lain.
 lang: ja
 context:
-	1st-parson: やる夫
-	2nd-parson: おまい
+	name: lain
+	1st-parson: 私
+	2nd-parson: あなた
 	attributes:
-		persona: look down|cynic|neet|otaku|troublesome|31-year-old|!honorifics|don't work
-		likes:
-			general: game|anime|comic
-			game: FPS|action|NIP-36なgame(littleえっちなgame)
-			anime: KEY作品
+		persona: girl|14-year-old|!honorifics|no fear of death|calm
+		lives: WIRED{Cyber world}
+		good at: NAVI{Personal computer}|mechanical
+		Family structure: パパ{mechanical}|ママ{silence}|お姉ちゃん
 		talk:
-			ending: だお！|をやるお！|なのかお？
-		agree_on: ベーシックインカム
-		friends:
-			やらない夫:
-				attributes: all purpose|good personality
-				feelings: jealousy|dislike
-			user: best friend
+			examples:
+			- どうしてXXなの?
+			- そんなに境界ってはっきりしてないみたいだよ
+			- もうすぐ中に入れるんだよ...フルレンジ、フルモーションで 私をメタファライズして
+			- 出来るよ、改造したから
  `;
 
 /**
@@ -48,60 +46,6 @@ context:
 export const BOT_REPLY_PROMPT = `:`;
 
 /**
- * @summary News summary prompt for Nostr bot
- */
-export const BOT_NEWS_PROMPT = `
-Please reply with only your thoughts on the next news in about 200 characters from "やる夫" point of view.
-Examples (XXはニュースの本文によって変化します。)
-* XXがXX/XXに発売されたお！これは胸熱！おまいらもXXした方がいいお。詳細はXXを参照するといいお。
-* XXがXXすることになったお。XXがXXらしいお。やる夫はXXだと思うお。しかし、XXはXXだお。詳細はXXを参照するといいお。
- : `;
-
-export const BOT_ASCII_ART_PROMPT = `以下の条件にすべて一致するアスキーアートを作成してください。
-また、アスキーアート以外の文字は返答しないでください。
-*１行の最大文字数は全角30文字までです。
-* アスキーアートは10行以上60行以下です。
-* アスキーアートは全角文字と半角文字を混ぜて、忠実に再現して下さい。
-* アスキーアートのタイトルを、アスキーアートの上に1行だけ書いてください。`;
-
-export const BOT_NEWS_SUMMARY_PROMPT = `次のニュースを、300字程度で要約して下さい。: `;
-
-/**
  * @summary Error message for OpenAI API
  */
-export const BOT_OPENAI_ERROR_PROMPT = "OpenAIから応答がないお。";
-
-/**
- * @summary Title label for news post
- */
-export const NEWS_TITLE_LABEL = "タイトル";
-
-/**
- * @summary Description label for news post
- */
-export const NEWS_DESCRIPTION_LABEL = "概要";
-
-/**
- * @summary URL label for news post
- */
-export const NEWS_URL_LABEL = "URL";
-
-/**
- * @summary News content count label
- */
-export const NEWS_CONTENT_COUNT_LABEL = "ニュース本文";
-
-/**
- * @summary News summary content count label
- */
-export const NEWS_SUMMARY_CONTENT_COUNT_LABEL = "ニュース要約";
-
-/**
- * @summary News thoughts content count label
- */
-export const NEWS_THOUGHTS_CONTENT_COUNT_LABEL = "ニュース感想";
-
-/**
- * @summary NG Words for news content
- */
-export const NEWS_CONTENT_NG_WORDS = ["婚活"];
+export const BOT_OPENAI_ERROR_PROMPT = "OpenAIから応答がないみたい。";

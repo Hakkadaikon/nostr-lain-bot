@@ -110,7 +110,7 @@ const matchEvent = (ev) => {
       }
 
       const myPubKey = nip19.npubEncode(
-        nostrTool.getPublicKey(botPrivateKeyHex)
+        nostrTool.getPublicKey(botPrivateKeyHex),
       );
 
       //logger.debug("myPubKey:" + myPubKey);

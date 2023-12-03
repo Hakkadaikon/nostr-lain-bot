@@ -32,9 +32,7 @@ const cmdCycTalk = () => {
 /**
  * @summary Command Regex and callback correspondence table
  */
-const routeMap = [
-  [/(help|ヘルプ|へるぷ)/g, true, cmdHelp],
-];
+const routeMap = [[/(help|ヘルプ|へるぷ)/g, true, cmdHelp]];
 
 /**
  * @summary Reply the response by OpenAI
@@ -47,7 +45,7 @@ const cmdOpenAI = (ev) => {
       relay.publish(reply);
     },
     config.BOT_INITIAL_PROMPT + config.BOT_REPLY_PROMPT + ev.content,
-    "gpt-4"
+    "gpt-4",
   );
 };
 
@@ -119,7 +117,7 @@ export async function init() {
   process.on("SIGTERM", () => {
     logger.info("SIGTERM");
     const exitPost = event.create("post", "寝るわ。(SIGTERM)");
-    relay.publish(exitPost)
+    relay.publish(exitPost);
     process.exit(1);
   });
 

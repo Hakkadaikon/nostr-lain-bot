@@ -28,7 +28,6 @@ lain bot operates according to the following terms.
 
 https://www.nbcuni.co.jp/rondorobe/anime/lain/ttl/
 
-
 ## Author
 
 Hakkadaikon
