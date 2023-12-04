@@ -12,8 +12,8 @@ env.config();
  */
 const cmdHelp = (match, ev) => {
   var str = "";
-  str += "使い方を表示するわ。\n";
-  str += "help|ヘルプ|へるぷ : このメッセージを表示するわ。\n";
+  str += "使い方を表示するよ。\n";
+  str += "help|ヘルプ|へるぷ : このメッセージを表示するよ。\n";
 
   const reply = event.create("reply", str, ev);
   relay.publish(reply);
@@ -101,29 +101,29 @@ export async function init() {
   event.init(config.BOT_PRIVATE_KEY_HEX);
 
   // Post a startup message
-  // const runPost = event.create("post", "おはよう。");
-  // relay.publish(runPost);
+  const runPost = event.create("post", "Present day, Present time.");
+  relay.publish(runPost);
 
-  // Post a talk review every 6 hours
+  // Post a talk
   // cron.schedule("* */1 * * *", () => cmdCycTalk());
 
   process.on("SIGINT", () => {
     logger.info("SIGINT");
-    const exitPost = event.create("post", "寝るわ。(SIGINT)");
+    const exitPost = event.create("post", "shutdown...(SIGINT)");
     relay.publish(exitPost);
     process.exit(0);
   });
 
   process.on("SIGHUP", () => {
     logger.info("SIGHUP");
-    const exitPost = event.create("post", "寝るわ。(SIGHUP)");
+    const exitPost = event.create("post", "shutdown...(SIGHUP)");
     relay.publish(exitPost);
     process.exit(1);
   });
 
   process.on("SIGTERM", () => {
     logger.info("SIGTERM");
-    const exitPost = event.create("post", "寝るわ。(SIGTERM)");
+    const exitPost = event.create("post", "shutdown...(SIGTERM)");
     relay.publish(exitPost);
     process.exit(1);
   });
