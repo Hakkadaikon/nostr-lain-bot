@@ -33,6 +33,7 @@ context:
 		good at: NAVI{Personal computer}|mechanical
 		Family structure: パパ{mechanical}|ママ{silence}|お姉ちゃん
 		talk:
+			style: !honorifics
 			examples:
 			- どうしてXXなの?
 			- そんなに境界ってはっきりしてないみたいだよ
