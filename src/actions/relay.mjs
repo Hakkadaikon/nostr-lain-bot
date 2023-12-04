@@ -167,13 +167,13 @@ export function publish(ev) {
   connect();
 
   const pub = relay.publish(ev);
-  pub.on("ok", () => {
-    logger.info("[publish] Success! : ");
-    logger.info(JSON.stringify(ev));
-  });
-  pub.on("failed", (reason) => {
-    logger.info(`[publish] Failed. : ${reason}`);
-    process.exit(1);
-  });
+  //pub.on("ok", () => {
+  //  logger.info("[publish] Success! : ");
+  //  logger.info(JSON.stringify(ev));
+  //});
+  //pub.on("failed", (reason) => {
+  //  logger.info(`[publish] Failed. : ${reason}`);
+  //  process.exit(1);
+  //});
   logger.debug("[publish] success!");
 }
