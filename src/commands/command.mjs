@@ -2,6 +2,7 @@ import * as env from "dotenv";
 import * as cron from "node-cron";
 import * as logger from "../utils/logger.mjs";
 import * as config from "../utils/config.mjs";
+import * as image from "../utils/image.mjs";
 import * as openai from "../actions/openai.mjs";
 import * as event from "../actions/event.mjs";
 import * as relay from "../actions/relay.mjs";
@@ -44,6 +45,27 @@ const routeMap = [[/(help|ヘルプ|へるぷ)/g, true, cmdHelp]];
  * @summary Reply the response by OpenAI
  */
 const cmdOpenAI = (ev) => {
+  if (image.containsImage(ev.content)) {
+    logger.debug("openai img send...");
+    const url = image.extractImage(ev.content);
+    const prompt = ev.content.replace(url, "");
+
+    logger.debug("prompt: " + prompt);
+    logger.debug("url: " + url);
+
+    openai.sendI2t(
+      (str) => {
+        logger.debug("prompt reply: " + str);
+        const reply = event.create("reply", str, ev);
+        relay.publish(reply);
+      },
+      prompt,
+      url,
+      "gpt-4-vision-preview",
+    );
+    return;
+  }
+
   logger.debug("openai send...");
   openai.send(
     (str) => {

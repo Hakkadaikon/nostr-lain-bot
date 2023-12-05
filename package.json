@@ -17,6 +17,6 @@
     "node-cron": "^3.0.3",
     "nostr-tools": "^1.11.1",
     "websocket-polyfill": "^0.0.3",
-    "openai": "^3.2.1"
+    "openai": "^4.20.1"
   }
 }
