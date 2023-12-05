@@ -30,7 +30,7 @@ const cmdCycTalk = () => {
       const post = event.create("post", str);
       relay.publish(post);
     },
-    config.BOT_INITIAL_PROMPT + config.BOT_REPLY_PROMPT,
+    config.BOT_REPLY_PROMPT,
     "gpt-4",
   );
 };
@@ -51,7 +51,7 @@ const cmdOpenAI = (ev) => {
       const reply = event.create("reply", str, ev);
       relay.publish(reply);
     },
-    config.BOT_INITIAL_PROMPT + config.BOT_REPLY_PROMPT + ev.content,
+    ev.content,
     "gpt-4",
   );
 };

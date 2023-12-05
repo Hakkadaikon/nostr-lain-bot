@@ -15,10 +15,11 @@ export async function send(callback, prompt, modelName) {
 
   try {
     const completion = await openai.createChatCompletion({
-      //model: "gpt-3.5-turbo-16k-0613",
-      //model: "gpt-4",
       model: modelName,
-      messages: [{ role: "user", content: prompt }],
+      messages: [
+        { role: "system", content: config.BOT_INITIAL_PROMPT },
+        { role: "user", content: prompt },
+      ],
       max_tokens: 300,
     });
 
