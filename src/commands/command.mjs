@@ -31,7 +31,7 @@ const cmdCycTalk = () => {
       relay.publish(post);
     },
     config.BOT_REPLY_PROMPT,
-    "gpt-4",
+    "gpt-4-1106-preview",
   );
 };
 
@@ -52,7 +52,7 @@ const cmdOpenAI = (ev) => {
       relay.publish(reply);
     },
     ev.content,
-    "gpt-4",
+    "gpt-4-1106-preview",
   );
 };
 
