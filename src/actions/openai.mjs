@@ -25,7 +25,7 @@ export async function send(callback, prompt) {
     logger.debug("url: " + url);
 
     content = [
-      { type: "text", text: prompt },
+      { type: "text", text: prompt2 },
       { type: "image_url", image_url: { url: url } },
     ];
 
