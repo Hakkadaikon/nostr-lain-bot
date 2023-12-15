@@ -12,8 +12,7 @@ env.config();
  * @summary Show help message
  */
 const cmdHelp = (match, ev) => {
-  var str = "";
-  str += "使い方を表示するよ。\n";
+  var str = "使い方を表示するよ。\n";
   str += "help|ヘルプ|へるぷ : このメッセージを表示するよ。\n";
 
   const reply = event.create("reply", str, ev);
@@ -45,37 +44,12 @@ const routeMap = [[/(help|ヘルプ|へるぷ)/g, true, cmdHelp]];
  * @summary Reply the response by OpenAI
  */
 const cmdOpenAI = (ev) => {
-  if (image.containsImage(ev.content)) {
-    logger.debug("openai img send...");
-    const url = image.extractImage(ev.content);
-    const prompt = ev.content.replace(url, "");
-
-    logger.debug("prompt: " + prompt);
-    logger.debug("url: " + url);
-
-    openai.sendI2t(
-      (str) => {
-        logger.debug("prompt reply: " + str);
-        const reply = event.create("reply", str, ev);
-        relay.publish(reply);
-      },
-      prompt,
-      url,
-      "gpt-4-vision-preview",
-    );
-    return;
-  }
-
   logger.debug("openai send...");
-  openai.send(
-    (str) => {
-      logger.debug("prompt reply: " + str);
-      const reply = event.create("reply", str, ev);
-      relay.publish(reply);
-    },
-    ev.content,
-    "gpt-4-1106-preview",
-  );
+  openai.send((str) => {
+    logger.debug("prompt reply: " + str);
+    const reply = event.create("reply", str, ev);
+    relay.publish(reply);
+  }, ev.content);
 };
 
 /**

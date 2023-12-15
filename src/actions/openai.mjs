@@ -11,46 +11,33 @@ const openai = new OpenAI({
 /**
  * @summary Send message to GPT-4
  */
-export async function send(callback, prompt, modelName) {
+export async function send(callback, prompt) {
   let str = "";
+  let content = prompt;
+  let modelName = "gpt-4-1106-preview";
 
-  try {
-    const completion = await openai.chat.completions.create({
-      model: modelName,
-      messages: [
-        { role: "system", content: config.BOT_INITIAL_PROMPT },
-        { role: "user", content: prompt },
-      ],
-      max_tokens: 300,
-    });
+  if (image.containsImage(prompt)) {
+    logger.debug("openai img send...");
+    const url = image.extractImage(prompt);
+    const prompt2 = prompt.replace(url, "");
 
-    str += completion.choices[0].message.content.trim();
-  } catch (e) {
-    logger.error(e);
-    str += config.BOT_OPENAI_ERROR_PROMPT;
+    logger.debug("prompt: " + prompt2);
+    logger.debug("url: " + url);
+
+    content = [
+      { type: "text", text: prompt },
+      { type: "image_url", image_url: { url: url } },
+    ];
+
+    modelName = "gpt-4-vision-preview";
   }
 
-  callback(str);
-}
-
-/**
- * @summary Send message to GPT-4
- */
-export async function sendI2t(callback, prompt, url, modelName) {
-  let str = "";
-
   try {
     const completion = await openai.chat.completions.create({
       model: modelName,
       messages: [
         { role: "system", content: config.BOT_INITIAL_PROMPT },
-        {
-          role: "user",
-          content: [
-            { type: "text", text: prompt },
-            { type: "image_url", image_url: { url: url } },
-          ],
-        },
+        { role: "user", content: content },
       ],
       max_tokens: 300,
     });
