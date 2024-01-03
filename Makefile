@@ -17,7 +17,7 @@ init: clean
 	yarn run eslint --init
 
 lint:
-	yarn run eslint
+	yarn run eslint .
 
 format:
 	yarn run prettier --write .
