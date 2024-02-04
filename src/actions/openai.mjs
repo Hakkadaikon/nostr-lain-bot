@@ -14,7 +14,7 @@ const openai = new OpenAI({
 export async function send(callback, prompt) {
   let str = "";
   let content = prompt;
-  let modelName = "gpt-4-1106-preview";
+  let modelName = "gpt-4-0125-preview";
 
   if (image.containsImage(prompt)) {
     logger.debug("openai img send...");

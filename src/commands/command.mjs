@@ -30,8 +30,8 @@ const cmdCycTalk = () => {
       const post = event.create("post", str);
       relay.publish(post);
     },
-    config.BOT_REPLY_PROMPT,
-    "gpt-4-1106-preview",
+    config.BOT_CYCLIC_PROMPT + config.BOT_REPLY_PROMPT,
+    "gpt-3.5-turbo-0125",
   );
 };
 
@@ -98,10 +98,10 @@ export async function init() {
 
   // Post a startup message
   // const runPost = event.create("post", "Present day, Present time.");
-  relay.publish(runPost);
+  // relay.publish(runPost);
 
   // Post a talk
-  // cron.schedule("* */1 * * *", () => cmdCycTalk());
+  cron.schedule("*/30 * * * *", () => cmdCycTalk());
 
   process.on("SIGINT", () => {
     logger.info("SIGINT");
