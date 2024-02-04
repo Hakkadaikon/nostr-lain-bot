@@ -97,7 +97,7 @@ export async function init() {
   event.init(config.BOT_PRIVATE_KEY_HEX);
 
   // Post a startup message
-  const runPost = event.create("post", "Present day, Present time.");
+  // const runPost = event.create("post", "Present day, Present time.");
   relay.publish(runPost);
 
   // Post a talk
