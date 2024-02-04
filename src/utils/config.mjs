@@ -49,7 +49,10 @@ export const BOT_REPLY_PROMPT = `:`;
 /**
  * @summary Cyclic prompt for Nostr bot
  */
-export const BOT_CYCLIC_PROMPT = `どれかの話を50字程度でして。: mechanical|programming|family|cyber world`;;
+export const BOT_CYCLIC_PROMPT1 = `機械についての話を50字程度でして。`;;
+export const BOT_CYCLIC_PROMPT2 = `programmingの話を50字程度でして。`;;
+export const BOT_CYCLIC_PROMPT3 = `家族の話を50字程度でして。`;;
+export const BOT_CYCLIC_PROMPT4 = `cyber worldについて展望を50字程度で話して。`;;
 
 /**
  * @summary Error message for OpenAI API

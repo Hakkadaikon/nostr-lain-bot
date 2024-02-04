@@ -23,6 +23,16 @@ const cmdHelp = (match, ev) => {
  * @summary Post a news review
  */
 const cmdCycTalk = () => {
+  const cycPrompts = [
+      config.BOT_CYCLIC_PROMPT1,
+      config.BOT_CYCLIC_PROMPT2,
+      config.BOT_CYCLIC_PROMPT3,
+      config.BOT_CYCLIC_PROMPT4
+  ];
+
+  // Randomly select a prompt (4 types)
+  const cycPrompt = cycPrompts[Math.floor(Math.random() * cycPrompts.length)];
+
   logger.debug("openai send...");
   openai.send(
     (str) => {
@@ -30,7 +40,7 @@ const cmdCycTalk = () => {
       const post = event.create("post", str);
       relay.publish(post);
     },
-    config.BOT_CYCLIC_PROMPT + config.BOT_REPLY_PROMPT,
+    cycPrompt + config.BOT_REPLY_PROMPT,
     "gpt-3.5-turbo-0125",
   );
 };
