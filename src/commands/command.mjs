@@ -111,7 +111,7 @@ export async function init() {
   // relay.publish(runPost);
 
   // Post a talk
-  cron.schedule("*/30 * * * *", () => cmdCycTalk());
+  // cron.schedule("*/30 * * * *", () => cmdCycTalk());
 
   process.on("SIGINT", () => {
     logger.info("SIGINT");
